@@ -24,6 +24,38 @@ public class Main {
         System.out.println(p2);
         System.out.println(p3);
         
+        
+        QueueLevel high = new QueueLevel(1, 2);   // High priority - RR with quantum 2
+        QueueLevel medium = new QueueLevel(2, 4); // Medium - RR with quantum 4
+        QueueLevel low = new QueueLevel(3, 6);    // Low - RR with quantum 6
+
+        Process[] allProcesses = {p1, p2, p3};
+
+        for (Process p : allProcesses) {
+            switch (p.getPriorityLevel()) {
+                case 1 -> high.addProcess(p);
+                case 2 -> medium.addProcess(p);
+                case 3 -> low.addProcess(p);
+            }
+        }
+
+        System.out.println("High Priority Queue:");
+        for (Process p : high.getQueue()) {
+            System.out.println(p);
+        }
+
+        System.out.println("\nMedium Priority Queue:");
+        for (Process p : medium.getQueue()) {
+            System.out.println(p);
+        }
+
+        System.out.println("\nLow Priority Queue:");
+        for (Process p : low.getQueue()) {
+            System.out.println(p);
+        }
+    }
+}
+        
         /*
         
         بعد ما نخلص كل الكلاسات : 
