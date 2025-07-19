@@ -53,6 +53,19 @@ public class Main {
         for (Process p : low.getQueue()) {
             System.out.println(p);
         }
+        
+        Dispatcher dispatcher = new Dispatcher();
+
+        System.out.println("\n--- Dispatcher Test ---");
+
+        // Simulate context switching between p1 -> p2 -> p3
+        dispatcher.contextSwitch(null, p1); // First process, no current process
+        dispatcher.contextSwitch(p1, p2);   // Switch from p1 to p2
+        dispatcher.contextSwitch(p2, p3);   // Switch from p2 to p3
+        dispatcher.contextSwitch(p3, null); // Last process finishes (optional)
+        
+        System.out.println("[Dispatcher] All processes have finished execution.");
+
     }
 }
         
@@ -82,6 +95,6 @@ public class Main {
     }
 }
 */
-    }
-}
+    
+
 
